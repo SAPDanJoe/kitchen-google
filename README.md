@@ -298,13 +298,18 @@ driver:
       disk_size: 30
     disk2:
       disk_size: 50
+      custom_image: my-custom-image
 ```
 
-In the above example the `disk0` would be automatically be used as the bootdisk (/dev/sda), `disk1` would be mounted as /dev/sdb and be 30 gigabytes in size. `disk2` would be mounted as /dev/sdc and 50 gigabytes in size. Any of these disks could be the bootdisk (see below), but since none is specified, disk0 is automatically elected. Note that if `disk1` would be set as bootdisk using `boot: true` it will be mounted as /dev/sda.
+In the above example the `disk0` would be automatically be used as the bootdisk (/dev/sda), `disk1` would be mounted as /dev/sdb and be 30 gigabytes in size. `disk2` would be mounted as /dev/sdc, 50 gigabytes in size, and use the `my-custom-image` disk image from your project.  Any of these disks could be the bootdisk (see below), but since none is specified, disk0 is automatically elected. Note that if `disk1` would be set as bootdisk using `boot: true` it will be mounted as /dev/sda.
 
 #### `boot`
 
 Specifies wether or not a disk should be used as the boot disk for the instance. By default the first disk will be used as boot disk.
+
+#### `custom_image`
+
+Allows you to specify a custom image for additional disks.  Note that `image_name` in the driver section will always take precedence for the boot disk.
 
 #### `autodelete_disk` - deprecated as standalone option
 
